@@ -37,5 +37,15 @@ func evaluate(expr string) (float64, error) {
 		}
 	}
 
+	// if it has the subtraction sign, send it to the subtract file
+	if strings.Contains(expr, "-") {
+		result, err := operations.Subtract(expr)
+		if err != nil {
+			return 0, err
+		} else {
+			return result, nil
+		}
+	}
+
 	return 0, nil
 }
