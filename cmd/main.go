@@ -24,4 +24,13 @@ func main() {
 			fmt.Println(result)
 		}
 	}
+
+	if strings.Contains(expr, "*") {
+		result, err := operations.Multiply(expr)
+		if err != nil {
+			fmt.Println("Error:", err)
+		} else {
+			fmt.Println(result)
+		}
+	}
 }
