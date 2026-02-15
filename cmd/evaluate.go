@@ -1,6 +1,8 @@
 package main
 
 import (
+	"fmt"
+	"strconv"
 	"strings"
 
 	"github.com/ethancroll/openCalc/operations"
@@ -12,9 +14,8 @@ func evaluate(expr string) (float64, error) {
 		result, err := operations.Add(expr)
 		if err != nil {
 			return 0, err
-		} else {
-			return result, nil
 		}
+		return result, nil
 	}
 
 	// if it has the multiplication sign, send it to the multiply file
@@ -22,9 +23,8 @@ func evaluate(expr string) (float64, error) {
 		result, err := operations.Multiply(expr)
 		if err != nil {
 			return 0, err
-		} else {
-			return result, nil
 		}
+		return result, nil
 	}
 
 	// if it has the division sign, send it to the divide file
@@ -32,9 +32,8 @@ func evaluate(expr string) (float64, error) {
 		result, err := operations.Divide(expr)
 		if err != nil {
 			return 0, err
-		} else {
-			return result, nil
 		}
+		return result, nil
 	}
 
 	// if it has the subtraction sign, send it to the subtract file
@@ -42,10 +41,14 @@ func evaluate(expr string) (float64, error) {
 		result, err := operations.Subtract(expr)
 		if err != nil {
 			return 0, err
-		} else {
-			return result, nil
 		}
+		return result, nil
 	}
 
-	return 0, nil
+	// no operator found — try to parse as a plain number
+	num, err := strconv.ParseFloat(expr, 64)
+	if err != nil {
+		return 0, fmt.Errorf("'%s' is not a valid expression", expr)
+	}
+	return num, nil
 }
