@@ -1,0 +1,21 @@
+# Binaries / build outputs
+calc
+calc.exe
+*.exe
+*.out
+*.test
+
+# macOS
+.DS_Store
+
+# Windows
+Thumbs.db
+Desktop.ini
+
+# Editor/IDE
+.vscode/
+.idea/
+
+# Optional: Go workspace file (only if you use it locally)
+go.work
+go.work.sum
