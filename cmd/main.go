@@ -15,8 +15,13 @@ func main() {
 	// gets rid of spaces (if any)
 	expr = strings.ReplaceAll(expr, " ", "")
 
-	// it it has the plus sign, send it to the addition file
+	// if it has the plus sign, send it to the addition file
 	if strings.Contains(expr, "+") {
-		fmt.Println(operations.Add(expr))
+		result, err := operations.Add(expr)
+		if err != nil {
+			fmt.Println("Error:", err)
+		} else {
+			fmt.Println(result)
+		}
 	}
 }
