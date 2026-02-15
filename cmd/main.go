@@ -25,6 +25,7 @@ func main() {
 		}
 	}
 
+	// if it has the multiplication sign, send it to the multiply file
 	if strings.Contains(expr, "*") {
 		result, err := operations.Multiply(expr)
 		if err != nil {
