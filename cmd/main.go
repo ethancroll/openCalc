@@ -15,25 +15,11 @@ func main() {
 
 	// resolve all parenthesized sub-expressions (innermost first)
 	for strings.Contains(expr, "(") {
-		// find the last '(' to handle innermost parentheses first
-		openIndex := strings.LastIndex(expr, "(")
-		// find the matching ')' after it
-		closeIndex := strings.Index(expr[openIndex:], ")") + openIndex
-
-		if closeIndex < openIndex {
-			fmt.Println("Error: mismatched parentheses")
-			return
-		}
-
-		inner := expr[openIndex+1 : closeIndex]
-		result, err := evaluate(inner)
+		result, err := parenthesis(expr)
 		if err != nil {
-			fmt.Println("Error:", err)
 			return
 		}
-
-		// replace the parentheses and their contents with the result
-		expr = expr[:openIndex] + fmt.Sprintf("%g", result) + expr[closeIndex+1:]
+		expr = result
 	}
 
 	result, err := evaluate(expr)
