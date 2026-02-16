@@ -13,6 +13,9 @@ func main() {
 	// gets rid of spaces (if any)
 	expr = strings.ReplaceAll(expr, " ", "")
 
+	// all to lowercase
+	expr = strings.ToLower(expr)
+
 	if expr == "" {
 		fmt.Println("Welcome to openCalc. Type in an expression with the command to use.")
 		return
