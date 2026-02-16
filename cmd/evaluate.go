@@ -45,6 +45,15 @@ func evaluate(expr string) (float64, error) {
 		return result, nil
 	}
 
+	// if it has an e, then send it to the exponenet operation
+	if strings.Contains(expr, "e") {
+		result, err := operations.Exponent(expr)
+		if err != nil {
+			return 0, err
+		}
+		return result, nil
+	}
+
 	// no operator found — try to parse as a plain number
 	num, err := strconv.ParseFloat(expr, 64)
 	if err != nil {
