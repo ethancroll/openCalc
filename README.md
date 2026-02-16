@@ -1,10 +1,52 @@
 # openCalc
 
-A terminal based calculator written in go  
-The goal is to be able to do math quickly and efficiently in the terminal.  
+Fast, minimal, terminal-first calculator written in Go.
+Type an expression, get an answer. No UI, no waiting.
 
-## how to use
+## Highlights
 
-go build -o openCalc ./cmd/main.go  
-if you want to run it from anywhere, add it to path on your machine  
-example: openCalc 8+5  
+- Zero-friction CLI usage
+- Exponent support (example: `5e5`)
+- Clean, small Go codebase
+
+## Quick Start
+
+Build the binary:
+
+```bash
+go build -o openCalc ./cmd
+```
+
+Run a calculation:
+
+```bash
+./openCalc 8+5
+./openCalc 5e5
+```
+
+Optional: move it to your PATH so you can call it anywhere.
+
+## Examples
+
+```bash
+./openCalc 12/3
+./openCalc 2e8
+./openCalc (3+4)*5
+```
+
+## Project Layout
+
+```text
+cmd/         CLI entrypoint and parsing
+operations/  Math operations implementation
+```
+
+## Development
+
+```bash
+go run ./cmd 9*(6-2)
+```
+
+## License
+
+See [LICENSE](LICENSE).
