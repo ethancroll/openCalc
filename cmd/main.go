@@ -13,19 +13,24 @@ func main() {
 	// gets rid of spaces (if any)
 	expr = strings.ReplaceAll(expr, " ", "")
 
-	// resolve all parenthesized sub-expressions (innermost first)
-	for strings.Contains(expr, "(") {
-		result, err := parenthesis(expr)
-		if err != nil {
-			return
-		}
-		expr = result
-	}
-
-	result, err := evaluate(expr)
-	if err != nil {
-		fmt.Println("Error:", err)
+	if expr == "" {
+		fmt.Println("Welcome to openCalc. Type in an expression with the command to use.")
+		return
 	} else {
-		fmt.Println(result)
+		// resolve all parenthesized sub-expressions (innermost first)
+		for strings.Contains(expr, "(") {
+			result, err := parenthesis(expr)
+			if err != nil {
+				return
+			}
+			expr = result
+		}
+
+		result, err := evaluate(expr)
+		if err != nil {
+			fmt.Println("Error:", err)
+		} else {
+			fmt.Println(result)
+		}
 	}
 }
