@@ -2,13 +2,14 @@ package operations
 
 import (
 	"fmt"
+	"os"
 	"strconv"
 	"strings"
 )
 
 // takes the subtraction expression, and returns the result
 func Subtract(expr string) (float64, error) {
-	parts := strings.Split(expr, "-") // ["8","9"]
+	parts := strings.Split(expr, os.Getenv("OPENCALC_SUBTRACT")) // ["8","9"]
 
 	a, err := strconv.ParseFloat(parts[0], 64) // left side of expression
 	if err != nil {
