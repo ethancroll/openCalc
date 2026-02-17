@@ -2,13 +2,14 @@ package operations
 
 import (
 	"fmt"
+	"os"
 	"strconv"
 	"strings"
 )
 
 // takes the addition expression, and returns the result
 func Add(expr string) (float64, error) {
-	parts := strings.Split(expr, "+") // ["8","9"]
+	parts := strings.Split(expr, os.Getenv("OPENCALC_ADD")) // ["8","9"]
 
 	a, err := strconv.ParseFloat(parts[0], 64) // left side of expression
 	if err != nil {
